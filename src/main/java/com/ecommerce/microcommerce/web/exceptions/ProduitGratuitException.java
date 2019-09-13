@@ -1,4 +1,13 @@
 package com.ecommerce.microcommerce.web.exceptions;
 
-public class ProduitGratuitException {
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(HttpStatus.BAD_REQUEST)
+public class ProduitGratuitException extends RuntimeException {
+
+    public ProduitGratuitException(String s) {
+        super(s);
+    }
+
 }
