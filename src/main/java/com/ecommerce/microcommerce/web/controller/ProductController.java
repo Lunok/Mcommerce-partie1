@@ -2,6 +2,7 @@ package com.ecommerce.microcommerce.web.controller;
 
 import com.ecommerce.microcommerce.dao.ProductDao;
 import com.ecommerce.microcommerce.model.Product;
+import com.ecommerce.microcommerce.web.exceptions.ProduitGratuitException;
 import com.ecommerce.microcommerce.web.exceptions.ProduitIntrouvableException;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
@@ -16,10 +17,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 
-@Api( description="API pour es opérations CRUD sur les produits.")
+@Api( description="API pour les opérations CRUD sur les produits.")
 
 @RestController
 public class ProductController {
@@ -28,27 +30,23 @@ public class ProductController {
     private ProductDao productDao;
 
 
-    //Récupérer la liste des produits
+    // Récupérer la liste des produits
 
     @RequestMapping(value = "/Produits", method = RequestMethod.GET)
 
     public MappingJacksonValue listeProduits() {
 
         Iterable<Product> produits = productDao.findAll();
-
         SimpleBeanPropertyFilter monFiltre = SimpleBeanPropertyFilter.serializeAllExcept("prixAchat");
-
         FilterProvider listDeNosFiltres = new SimpleFilterProvider().addFilter("monFiltreDynamique", monFiltre);
-
         MappingJacksonValue produitsFiltres = new MappingJacksonValue(produits);
-
         produitsFiltres.setFilters(listDeNosFiltres);
 
         return produitsFiltres;
     }
 
 
-    //Récupérer un produit par son Id
+    // Récupérer un produit par son ID
     @ApiOperation(value = "Récupère un produit grâce à son ID à condition que celui-ci soit en stock!")
     @GetMapping(value = "/Produits/{id}")
 
@@ -56,15 +54,12 @@ public class ProductController {
 
         Product produit = productDao.findById(id);
 
-        if(produit==null) throw new ProduitIntrouvableException("Le produit avec l'id " + id + " est INTROUVABLE. Écran Bleu si je pouvais.");
+        if(produit==null) throw new ProduitIntrouvableException("Le produit avec l'id " + id + " est introuvable.");
 
         return produit;
     }
 
-
-
-
-    //ajouter un produit
+    // Ajouter un produit
     @PostMapping(value = "/Produits")
 
     public ResponseEntity<Void> ajouterProduit(@Valid @RequestBody Product product) {
@@ -95,14 +90,31 @@ public class ProductController {
         productDao.save(product);
     }
 
-
-    //Pour les tests
+    // Pour les tests
     @GetMapping(value = "test/produits/{prix}")
-    public List<Product>  testeDeRequetes(@PathVariable int prix) {
+    public List<Product> testeDeRequetes(@PathVariable int prix) {
 
         return productDao.chercherUnProduitCher(400);
     }
 
+    /**
+     * Calculer la marge d'un produit
+     * @return string|null
+     */
+    @GetMapping(value = "/AdminProduits")
+    public List<String> calculerMargeProduit() {
+
+        List<Product> products = productDao.findAll();
+        List<String> margeProducts = new ArrayList<>();
+
+        products.forEach(product -> {
+
+            margeProducts.add("Product{id=" + product.getId() + ", nom='" + product.getNom() + "', prix=" + product.getPrix() + ", prixAchat=" +  product.getPrixAchat() + "}:" + (product.getPrix() - product.getPrixAchat()));
+
+        });
+
+        return margeProducts;
+    }
 
 
 }
