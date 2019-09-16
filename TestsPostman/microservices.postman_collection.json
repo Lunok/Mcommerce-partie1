@@ -1,0 +1,279 @@
+{
+	"info": {
+		"_postman_id": "930ce1c9-bd69-42aa-b76e-20b70e2ad6e2",
+		"name": "microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "127.0.0.1:9090/Produits",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:9090/Produits/2",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9090",
+					"path": [
+						"Produits",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:9090/Produits/2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:9090/Produits/2",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9090",
+					"path": [
+						"Produits",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:9090/Produits",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 4,\n    \"nom\": \"Roi des rats\",\n    \"prix\": 600,\n    \"prixAchat\": 300\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:9090/Produits",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9090",
+					"path": [
+						"Produits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:9090/Produits/4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:9090/Produits/4",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9090",
+					"path": [
+						"Produits",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:9090/60",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:9090/60",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9090",
+					"path": [
+						"60"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:9090/Produits/4",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:9090/Produits/4",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9090",
+					"path": [
+						"Produits",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:9090/Produits",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 2,\n    \"nom\": \"Aspirateur Robot V2\",\n    \"prix\": 550,\n    \"prixAchat\": 250\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:9090/Produits",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9090",
+					"path": [
+						"Produits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:9090/AdminProduits",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:9090/AdminProduits",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9090",
+					"path": [
+						"AdminProduits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:9090/trierProduitsParOrdreAlphabetique",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:9090/trierProduitsParOrdreAlphabetique",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9090",
+					"path": [
+						"trierProduitsParOrdreAlphabetique"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:9090/test/produits/351",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:9090/test/produits/351",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9090",
+					"path": [
+						"test",
+						"produits",
+						"351"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
